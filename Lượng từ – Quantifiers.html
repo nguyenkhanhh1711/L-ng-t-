@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lượng từ – Quantifiers</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf4ee;--card:#fff;--ink:#1b1b2f;--mute:#5d5d74;--line:#eadfd6;--or:#ff7a2f;--okc:#2fa36b;--okb:#e4f6ec;--nb:#e0507a;--nbb:#ffe6ee;--tip:#fff6e0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.75 "Be Vietnam Pro",system-ui,sans-serif;overflow-x:hidden}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--or);z-index:60}
+nav{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;background:#fffffff0;border-radius:40px;padding:6px 6px 6px 16px;box-shadow:0 8px 30px #0002;max-width:94vw;overflow-x:auto;scrollbar-width:none}
+nav b{font-weight:800;color:#1b1b2f;margin-right:8px;white-space:nowrap}
+nav a{color:#1b1b2f;text-decoration:none;font:500 13px "Be Vietnam Pro";padding:5px 11px;border-radius:20px;white-space:nowrap;transition:.2s}
+nav a:hover{background:#f1e6dc}
+nav a.dk{background:#1b1b2f;color:#fff;font-weight:600}
+#snd{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;width:46px;height:46px;border-radius:50%;border:0;background:#1b1b2f;color:#fff;font-size:19px;cursor:pointer;box-shadow:0 6px 20px #0004}
+#pill{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;background:#fff;color:#1b1b2f;font:600 13px "Be Vietnam Pro";padding:8px 16px;border-radius:30px;box-shadow:0 6px 20px #0003}
+/* hero */
+header{position:relative;height:100vh;min-height:620px;overflow:hidden;background:linear-gradient(180deg,#d9dcea 0,#e9dde0 45%,#f6d6bf 78%,#f3c9a4 100%);text-align:center}
+.ly{position:absolute;left:0;right:0;bottom:0;width:100%;will-change:transform}
+.ly svg{display:block;width:100%;height:100%}
+.sun{position:absolute;left:50%;bottom:20%;width:70vw;height:50vh;transform:translateX(-50%);background:radial-gradient(ellipse,#ffd9b0aa,transparent 70%)}
+.hc{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px 14vh}
+.badge{background:#ffffffcc;border-radius:20px;padding:3px 16px;font:500 13px "Be Vietnam Pro";box-shadow:0 2px 10px #0001;margin-bottom:20px}
+h1{font:800 clamp(40px,8.5vw,84px)/1.05 "Be Vietnam Pro";letter-spacing:-2px;color:#1b1b2f}
+.sub{max-width:520px;margin:16px 0 26px;font-size:18px;color:#2e2e46}
+.cta{display:flex;gap:18px;align-items:center;justify-content:center}
+.b1{border:0;background:#fff;color:#1b1b2f;font:600 15px "Be Vietnam Pro";padding:11px 24px;border-radius:30px;cursor:pointer;box-shadow:0 6px 20px #0002;transition:.25s}
+.b1:hover{transform:translateY(-3px)}
+.b2{background:none;border:0;font:500 15px "Be Vietnam Pro";color:#1b1b2f;cursor:pointer}
+.sway{transform-origin:bottom;animation:sw 5s ease-in-out infinite alternate}
+@keyframes sw{to{transform:skewX(2deg)}}
+.cloud{position:absolute;width:160px;height:40px;border-radius:40px;background:#ffffff88;filter:blur(8px);animation:cl 60s linear infinite}
+@keyframes cl{from{left:-200px}to{left:105%}}
+/* sections */
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.sec{padding:90px 0 10px}
+.eb{display:inline-block;background:var(--or);color:#fff;font:600 12px "Be Vietnam Pro";letter-spacing:1px;padding:2px 14px;border-radius:20px;margin-bottom:10px}
+h2{font:800 clamp(28px,5vw,46px)/1.12 "Be Vietnam Pro";letter-spacing:-1px;margin-bottom:18px}
+h3{font:800 22px/1.3 "Be Vietnam Pro";margin-bottom:8px}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:26px;padding:24px 26px;margin-bottom:18px;box-shadow:0 10px 30px #7a4a2a14}
+b{font-weight:600}
+.ok,.bad,.tip{padding:10px 16px;border-radius:14px;margin-top:10px;font-size:15px}
+.ok{background:var(--okb);border-left:5px solid var(--okc)}
+.bad{background:var(--nbb);border-left:5px solid var(--nb)}
+.tip{background:var(--tip);border-left:5px solid var(--or)}
+.mu{color:var(--mute)}
+.ch{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ch i{font-style:normal;font-weight:600;font-size:14px;padding:3px 14px;border-radius:20px;background:color-mix(in srgb,var(--c,var(--or)) 16%,transparent);color:var(--c,var(--or));border:1.5px solid color-mix(in srgb,var(--c,var(--or)) 50%,transparent);transition:.2s}
+.ch i:hover{transform:translateY(-3px) rotate(-2deg);background:var(--c,var(--or));color:#fff}
+.gh{border-left:8px solid var(--c);padding-left:18px;margin:48px 0 14px}
+.gh h3{color:var(--c);font-size:26px;margin:0}
+.dis{margin-top:16px}
+.dis h4{font:800 17px "Be Vietnam Pro";margin-bottom:4px}
+.dis li{margin:4px 0 4px 20px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.g3 .card{margin:0}
+/* exercise */
+.exr{background:var(--tip);border:2px dashed var(--or);border-radius:24px;padding:18px 22px;margin:18px 0}
+.exr h4{font:800 17px "Be Vietnam Pro";color:var(--or);margin-bottom:10px}
+.qi{padding:10px 0;border-top:1px solid var(--line)}
+.qi:first-of-type{border-top:0}
+.qi p{margin-bottom:8px}
+.op{display:flex;gap:8px;flex-wrap:wrap}
+.op button{font:600 15px "Be Vietnam Pro";padding:5px 18px;border-radius:24px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:.2s}
+.op button:hover:not(:disabled){border-color:var(--or);transform:translateY(-2px)}
+.op .c{background:var(--okc);border-color:var(--okc);color:#fff}
+.op .x{background:var(--nb);border-color:var(--nb);color:#fff;animation:sk .4s}
+@keyframes sk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{display:none;margin-top:8px;font-size:14.5px;padding:8px 14px;border-radius:12px;animation:up .4s}
+.fb.ok{display:block}.fb.bad{display:block}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+/* glass */
+.gl{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center}
+@media(max-width:560px){.gl{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.wt{transition:all .8s cubic-bezier(.3,.9,.3,1)}
+.btn{font:600 15px "Be Vietnam Pro";padding:7px 20px;border-radius:30px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:.2s;margin:4px 6px 4px 0}
+.btn:hover{transform:translateY(-3px)}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:12px 20px;margin-bottom:12px}
+summary{font-weight:600;cursor:pointer}
+details li{margin:6px 0 6px 18px;font-size:15px}
+footer{text-align:center;padding:70px 20px 110px;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><b>🌼 Lượng từ</b><a href="#top">Home</a><a href="#p1">Bản chất</a><a href="#p2">Phân loại</a><a href="#p3">Mở rộng</a><a href="#p4">Phương pháp</a><a href="#dap">Đáp án</a><a class="dk" href="#p2">Luyện tập</a></nav>
+<button id="snd" aria-label="Âm thanh">🔇</button><div id="pill">Bài tập 0/13</div>
+
+<header id="top">
+  <div class="cloud" style="top:14%"></div><div class="cloud" style="top:26%;animation-delay:-30s;width:110px"></div>
+  <div class="sun"></div>
+  <div class="ly" data-s=".06" style="height:70%"><svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice"><path d="M0 500V190L70 130L120 60L190 20L260 90L300 200L360 320L420 500Z" fill="#e6d2d6"/><path d="M120 60L190 20L215 120L170 240L130 150Z" fill="#d7c0c8"/><path d="M1440 500V160L1330 200L1240 290L1160 360L1100 500Z" fill="#b99fb4"/><path d="M880 500L1000 340L1070 290L1160 380L1200 500Z" fill="#cdb5c3"/></svg></div>
+  <div class="ly" data-s=".12" style="height:48%"><svg viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice"><path d="M0 360V120C150 150 280 190 420 230C600 280 700 300 900 270C1100 240 1250 180 1440 160V360Z" fill="#b9b44a"/><path d="M0 360V200C160 190 330 240 470 280C650 330 880 330 1100 290C1250 262 1350 240 1440 250V360Z" fill="#8fa23d"/><g><rect x="90" y="150" width="110" height="60" fill="#e9e5de"/><path d="M80 152L145 118L215 150Z" fill="#3b3a46"/><rect x="110" y="170" width="22" height="40" fill="#8a8579"/></g><g class="sway"><rect x="880" y="190" width="9" height="60" fill="#5b3a2a"/><circle cx="884" cy="170" r="48" fill="#d8672d"/><circle cx="905" cy="195" r="30" fill="#c9561f"/></g></svg></div>
+  <div class="ly" data-s=".22" style="height:30%"><svg id="fl" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice"></svg></div>
+  <div class="hc"><div class="badge">Chuyên đề ngữ pháp · Quantifiers 🌼</div><h1>Lượng từ,<br>thật nhẹ nhàng.</h1><p class="sub">Học bản chất, phân loại, so sánh và làm bài tập thực hành, để bạn có thể thở một hơi thật sâu rồi dùng đúng.</p><div class="cta"><button class="b1" id="go">Bắt đầu ➔</button><button class="b2" id="mus">Bật nhạc ♪</button></div></div>
+</header>
+
+<main class="wrap">
+<section class="sec" id="p1">
+  <div class="rv"><span class="eb">PHẦN 1</span><h2>Bản chất lượng từ là gì? Tại sao cần sử dụng?</h2></div>
+  <div class="card rv"><p><b>Lượng từ là gì?</b> Lượng từ (Quantifiers) là những từ hoặc cụm từ đứng <b>TRƯỚC</b> danh từ nhằm cung cấp thông tin về số lượng của danh từ đó (nhiều, ít, một vài, tất cả...).</p>
+  <p style="margin-top:10px"><b>Tại sao lại có lượng từ?</b> Không phải lúc nào ta cũng đếm chính xác bằng các số đếm (1, 2, 3...). Đặc biệt với danh từ trừu tượng hoặc chất lỏng như nước (water), tiền (money), thời gian (time), ta không thể đếm trực tiếp. Ngôn ngữ dùng lượng từ để thể hiện sự ước lượng này (VD: <i>a little water, much money, some apples</i>).</p>
+  <p style="margin-top:10px"><b>Vị trí trong câu:</b> Lượng từ luôn đứng TRƯỚC danh từ.</p><div class="tip"><b>Cấu trúc:</b> Lượng từ + (Tính từ nếu có) + Danh từ. VD: <i>Many beautiful girls.</i></div>
+  <div class="ok"><b>[ĐÚNG]</b> I have <b>some</b> friends. <i class="mu">(Lượng từ đứng trước danh từ)</i></div><div class="bad"><b>[SAI]</b> I have friends <b>some</b>. <i class="mu">(Sai vị trí lượng từ)</i></div></div>
+  <div class="exr rv" data-k="p1"></div>
+</section>
+
+<section class="sec" id="p2">
+  <div class="rv"><span class="eb">PHẦN 2</span><h2>Phân loại, cách dùng và phân biệt</h2><p class="mu">Để làm tốt bài tập, hãy chú ý phân loại danh từ đi kèm phía sau (đếm được hay không đếm được). Kiến thức chia làm 4 nhóm chính.</p></div>
+
+  <div class="gh rv" style="--c:#ff7a2f"><h3>Nhóm 1: Chỉ đi với danh từ đếm được số nhiều (có “s/es”)</h3></div>
+  <div class="card rv" style="--c:#ff7a2f"><div class="ch"><i>Many (nhiều)</i><i>A few / Few (một vài / rất ít)</i><i>Several (vài)</i><i>A number of / The number of (một số lượng)</i></div>
+  <div class="dis"><h4>🔍 Phân biệt: FEW và A FEW</h4><ul><li><b>A few (một vài / đủ dùng):</b> sắc thái TÍCH CỰC. Dù ít nhưng vẫn đáp ứng đủ nhu cầu.</li><li><b>Few (rất ít / hầu như không có):</b> sắc thái TIÊU CỰC. Thiếu thốn, không đủ để làm gì.</li></ul></div>
+  <div class="ok"><b>[ĐÚNG]</b> I have <b>a few</b> friends in this city, so I am not lonely. <i class="mu">(Tích cực: có VÀI người bạn, nên không cô đơn.)</i></div>
+  <div class="ok"><b>[ĐÚNG]</b> I have <b>few</b> friends in this city, so I feel very lonely. <i class="mu">(Tiêu cực: có QUÁ ÍT bạn, nên thấy rất cô đơn.)</i></div>
+  <div class="bad"><b>[SAI]</b> I have <b>many</b> money. <i class="mu">(Sai vì money KHÔNG đếm được, không đi với many.)</i></div></div>
+  <div class="exr rv" data-k="g1"></div>
+
+  <div class="gh rv" style="--c:#3b82d9"><h3>Nhóm 2: Chỉ đi với danh từ không đếm được</h3></div>
+  <div class="card rv"><div class="ch" style="--c:#3b82d9"><i>Much (nhiều)</i><i>A little / Little (một chút / rất ít)</i><i>A great deal of / A large amount of (một lượng lớn)</i></div>
+  <div class="dis"><h4>🔍 Phân biệt: LITTLE và A LITTLE</h4><p class="mu">Nguyên tắc tương tự Few / A few nhưng áp dụng cho danh từ không đếm được.</p><ul><li><b>A little (một chút / đủ dùng):</b> sắc thái TÍCH CỰC.</li><li><b>Little (rất ít / hầu như không có):</b> sắc thái TIÊU CỰC.</li></ul></div>
+  <div class="ok"><b>[ĐÚNG]</b> We have <b>a little</b> time before the train leaves. Let's get a coffee. <i class="mu">(Còn VÀI PHÚT, đủ uống cà phê.)</i></div>
+  <div class="ok"><b>[ĐÚNG]</b> Hurry up! We have <b>little</b> time left. <i class="mu">(Còn QUÁ ÍT thời gian, phải khẩn trương.)</i></div>
+  <div class="bad"><b>[SAI]</b> She gave me <b>a little</b> apples. <i class="mu">(Sai vì apples đếm được số nhiều, phải dùng a few.)</i></div></div>
+  <div class="exr rv" data-k="g2"></div>
+
+  <div class="gh rv" style="--c:#2fa36b"><h3>Nhóm 3: Đi được với cả danh từ đếm được số nhiều và không đếm được</h3></div>
+  <div class="card rv"><div class="ch" style="--c:#2fa36b"><i>Some / Any (một vài / bất cứ)</i><i>A lot of / Lots of / Plenty of (rất nhiều)</i><i>All (tất cả)</i><i>Most (hầu hết)</i></div>
+  <div class="dis"><h4>🔍 Phân biệt: SOME và ANY</h4><ul><li><b>SOME:</b> chủ yếu trong câu KHẲNG ĐỊNH và trong lời mời / yêu cầu lịch sự (Would you like some...?).</li><li><b>ANY:</b> chủ yếu trong câu PHỦ ĐỊNH (có NOT) và câu HỎI.</li></ul></div>
+  <div class="ok"><b>[ĐÚNG – Khẳng định]</b> I have <b>some</b> books and <b>some</b> milk.</div>
+  <div class="ok"><b>[ĐÚNG – Phủ định / Hỏi]</b> I don't have <b>any</b> books. Do you have <b>any</b> milk?</div>
+  <div class="bad"><b>[SAI]</b> I don't have <b>some</b> money. <i class="mu">(Câu chứa “don't” là câu phủ định, cần dùng “any”.)</i></div>
+  <div class="ok"><b>[ĐÚNG – Lời mời]</b> Would you like <b>some</b> tea? <i class="mu">(Tuy có cấu trúc câu hỏi nhưng mang ý mời mọc lịch sự nên dùng “some”.)</i></div></div>
+  <div class="exr rv" data-k="g3"></div>
+
+  <div class="gh rv" style="--c:#9b6be0"><h3>Nhóm 4: Đi với danh từ đếm được số ít (không có “s/es”)</h3></div>
+  <div class="card rv"><div class="ch" style="--c:#9b6be0"><i>Each (mỗi)</i><i>Every (mọi)</i><i>Another (một cái khác)</i><i>Either / Neither (một trong hai / không cái nào trong hai)</i></div>
+  <div class="dis"><h4>🔍 Phân biệt: EACH và EVERY</h4><ul><li><b>Each:</b> chỉ TỪNG cá nhân, từng vật riêng biệt, mang tính đơn lẻ. Thường dùng khi nhắc đến nhóm từ 2 đối tượng trở lên.</li><li><b>Every:</b> chỉ TẤT CẢ mọi người/vật trong một nhóm như một tập thể. Chỉ dùng cho nhóm từ 3 đối tượng trở lên.</li></ul></div>
+  <div class="ok"><b>[ĐÚNG]</b> <b>Every</b> student in the class passed the exam. <i class="mu">(Mọi học sinh, nhấn mạnh tổng thể cả lớp.)</i></div>
+  <div class="ok"><b>[ĐÚNG]</b> <b>Each</b> student was given a different book. <i class="mu">(Mỗi học sinh, nhấn mạnh sự phân chia cho từng em.)</i></div>
+  <div class="bad"><b>[SAI]</b> <b>Every of</b> the students... <i class="mu">(Every KHÔNG kết hợp trực tiếp với “of”. Cần dùng “Each of the students”.)</i></div>
+  <div class="bad"><b>[SAI]</b> <b>Many</b> student... <i class="mu">(Many yêu cầu danh từ số nhiều: Many students.)</i></div></div>
+  <div class="exr rv" data-k="g4"></div>
+</section>
+
+<section class="sec" id="p3">
+  <div class="rv"><span class="eb">PHẦN 3</span><h2>Kiến thức mở rộng và lưu ý trọng tâm</h2></div>
+  <h3 class="rv">1. Cách dùng giới từ “of” sau lượng từ</h3>
+  <p class="mu rv" style="margin-bottom:12px">Học sinh thường nhầm giữa <i>Some people</i> và <i>Some of people</i>. Hãy ghi nhớ:</p>
+  <div class="g3">
+    <div class="card rv"><b>Lượng từ + danh từ chung:</b> KHÔNG kèm “of”.<div class="ok">➤ Some people, Many books, Much money.</div></div>
+    <div class="card rv"><b>Lượng từ + OF + (The / This / That / My / His / Her / Us / Them) + danh từ:</b> BẮT BUỘC có từ xác định.<div class="ok">➤ Some of <b>THE</b> people, Many of <b>MY</b> books.</div></div>
+  </div>
+  <div class="card rv" style="margin-top:18px"><div class="bad"><b>[SAI]</b> Most of students are lazy. <i class="mu">(Thiếu mạo từ “the” hoặc tính từ sở hữu sau “of”.)</i></div><div class="bad"><b>[SAI]</b> Most the students are lazy. <i class="mu">(Có “the” mà thiếu giới từ “of”.)</i></div><div class="ok"><b>[ĐÚNG]</b> Most students are lazy. (Hoặc: Most of the students are lazy.)</div></div>
+
+  <h3 class="rv" style="margin-top:40px">2. Sự hòa hợp giữa chủ ngữ và động từ</h3>
+  <p class="mu rv" style="margin-bottom:12px">Khi lượng từ làm chủ ngữ, động từ chia số ít hay số nhiều phụ thuộc vào danh từ đi kèm:</p>
+  <div class="g3">
+    <div class="card rv"><b>Some, All, Most, A lot of, Plenty of + danh từ số nhiều</b> → động từ chia <b>SỐ NHIỀU</b>.<div class="ok">Some of the apples <b>are</b> bad.</div></div>
+    <div class="card rv"><b>Some, All, Most, A lot of, Plenty of + danh từ không đếm được</b> → động từ chia <b>SỐ ÍT</b>.<div class="ok">Some of the milk <b>is</b> sour.</div></div>
+    <div class="card rv"><b>A number of + danh từ số nhiều</b> → động từ <b>SỐ NHIỀU</b> (nghĩa: nhiều...).<div class="ok">A number of students <b>are</b> playing.</div></div>
+    <div class="card rv"><b>The number of + danh từ số nhiều</b> → động từ <b>SỐ ÍT</b> (nghĩa: con số của...).<div class="ok">The number of students in my class <b>is</b> 40.</div></div>
+    <div class="card rv"><b>Each, Every + danh từ số ít</b> → động từ <b>LUÔN LUÔN SỐ ÍT</b>.<div class="ok">Every student <b>has</b> a book.</div></div>
+  </div>
+  <div class="exr rv" data-k="p3"></div>
+</section>
+
+<section class="sec" id="p4">
+  <div class="rv"><span class="eb">PHẦN 4</span><h2>Phương pháp học lượng từ hiệu quả</h2></div>
+  <div class="card rv"><h3>① Phân loại (sơ đồ tư duy)</h3><p class="mu">Hệ thống hóa lượng từ thành 3 cột chính để dễ nhớ:</p>
+  <div class="g3" style="margin-top:12px"><div><b style="color:#ff7a2f">Đếm được</b><div class="ch" style="--c:#ff7a2f"><i>Many</i><i>Few</i><i>Several</i></div></div><div><b style="color:#3b82d9">Không đếm được</b><div class="ch" style="--c:#3b82d9"><i>Much</i><i>Little</i></div></div><div><b style="color:#2fa36b">Cả hai</b><div class="ch" style="--c:#2fa36b"><i>Some</i><i>Any</i><i>A lot of</i></div></div></div></div>
+  <div class="card rv"><h3>② Phân biệt tích cực / tiêu cực: hình ảnh ly nước</h3><div class="gl"><svg viewBox="0 0 120 150" width="150"><path d="M20 10H100L88 140H32Z" fill="none" stroke="#8aa0c8" stroke-width="5"/><clipPath id="cp"><path d="M20 10H100L88 140H32Z"/></clipPath><g clip-path="url(#cp)"><rect id="wt" class="wt" x="0" y="80" width="120" height="70" fill="#5aa8f0"/></g><text id="fc" x="60" y="100" text-anchor="middle" font-size="30">🙂</text></svg>
+  <div><button class="btn on" data-w="1">Có “a”: a little / a few</button><button class="btn" data-w="0">Không có “a”: little / few</button><p id="wc" style="margin-top:8px"></p></div></div></div>
+  <div class="card rv"><h3>③ Nguyên tắc sử dụng “OF”</h3><div class="tip">Nếu dùng OF, <b>bắt buộc</b> phải có mạo từ (THE) hoặc tính từ sở hữu (MY, HIS...). Nếu không có các từ xác định này, tuyệt đối không dùng OF.</div></div>
+</section>
+
+<section class="sec" id="dap">
+  <div class="rv"><span class="eb">ĐÁP ÁN</span><h2>Đáp án bài tập vận dụng nhanh</h2><p class="mu">Bạn cũng sẽ thấy đáp án ngay khi làm từng câu ở trên.</p></div><div id="ans" class="rv"></div>
+</section>
+</main>
+<footer>Hít một hơi thật sâu: lượng từ đứng <b>trước</b> danh từ, nhớ đếm được hay không đếm được, và “of” luôn đi cùng từ xác định. 🌼</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+/* audio */
+let ac,mg,on=false,tm,st=0;
+function init(){if(ac)return;ac=new(window.AudioContext||window.webkitAudioContext)();mg=ac.createGain();mg.gain.value=.55;const d=ac.createDelay();d.delayTime.value=.38;const f=ac.createGain();f.gain.value=.35;d.connect(f);f.connect(d);mg.connect(ac.destination);mg.connect(d);d.connect(ac.destination)}
+function tone(fr,t,du,ty,v,to){const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.setValueAtTime(fr,t);if(to)o.frequency.exponentialRampToValueAtTime(to,t+du);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+du);o.connect(g);g.connect(mg);o.start(t);o.stop(t+du+.05)}
+const SC=[523,587,659,784,880,1047],BS=[131,175,196,131];
+function beat(){const t=ac.currentTime+.05;if(st%8==0)tone(BS[(st/8)%4],t,3.4,"triangle",.09);if(Math.random()<.7)tone(SC[Math.floor(Math.random()*6)],t,1.3,"sine",.07);if(Math.random()<.07)tone(2300,t,.14,"sine",.035,3400);st++}
+function sfx(k){if(!on)return;const t=ac.currentTime;({tap:()=>tone(600,t,.12,"sine",.14,950),ok:()=>[660,880,1175].forEach((f,i)=>tone(f,t+i*.09,.35,"sine",.14)),no:()=>tone(300,t,.3,"triangle",.14,200)})[k]()}
+function snd(v){on=v;$("#snd").textContent=v?"🔊":"🔇";$("#mus").textContent=v?"Tắt nhạc":"Bật nhạc ♪";if(v){init();ac.resume();clearInterval(tm);tm=setInterval(beat,560)}else clearInterval(tm)}
+$("#snd").onclick=()=>{snd(!on);sfx("tap")};$("#mus").onclick=()=>{snd(!on);sfx("tap")};
+$("#go").onclick=()=>$("#p1").scrollIntoView();
+document.addEventListener("click",e=>{if(e.target.closest("button,a,summary")&&!e.target.closest(".op"))sfx("tap")},true);
+
+/* exercises */
+const E={
+p1:["Bài tập vận dụng nhanh (Đúng – Sai)","Phần 1",[
+["She bought beautiful many flowers yesterday.",["Đúng","Sai"],1,"SAI. Vị trí đúng: ... bought <b>many beautiful</b> flowers... Lượng từ “many” phải đặt trước tính từ “beautiful”."],
+["He needs a lot of water to drink.",["Đúng","Sai"],0,"ĐÚNG. “A lot of” đứng trước danh từ không đếm được “water” là hợp lý và đúng cấu trúc."]]],
+g1:["Chọn từ đúng (Few / A few / Many)","Phần 2 – Nhóm 1",[
+["I can't buy this shirt. I have ___ dollars left. (tình huống thiếu thốn)",["Few","A few","Many"],0,"<b>few</b>. Vế sau là “không thể mua”, biểu thị sự thiếu thốn, sắc thái tiêu cực nên cần few."],
+["There are ___ students in the classroom. They are waiting for the teacher.",["Few","A few","Many"],[1,2],"<b>a few / many</b> đều được (tùy ngữ cảnh), nhưng chắc chắn phải dùng lượng từ cho danh từ đếm được số nhiều."]]],
+g2:["Chọn từ đúng (Little / A little / Much)","Phần 2 – Nhóm 2",[
+["Can you put ___ sugar in my coffee? I like it sweet.",["Little","A little","Much"],1,"<b>a little</b>. Ý xin thêm một chút đường, mang tính tích cực, một lượng nhỏ đủ dùng."],
+["I have so ___ money that I can't afford a bus ticket.",["Little","A little","Much"],0,"<b>little</b>. Có quá ít tiền nên không đủ mua vé, thể hiện sự thiếu thốn, tiêu cực."]]],
+g3:["Chọn từ đúng (Some / Any)","Phần 2 – Nhóm 3",[
+["Are there ___ tomatoes left in the fridge?",["Some","Any"],1,"<b>any</b>. Dùng trong câu hỏi thông thường để xác minh thông tin."],
+["Could I have ___ water, please?",["Some","Any"],0,"<b>some</b>. Tuy có cấu trúc câu hỏi nhưng đây là lời yêu cầu lịch sự, do đó dùng “some”."]]],
+g4:["Điền Each / Every","Phần 2 – Nhóm 4",[
+["___ time I see her, she is smiling.",["Each","Every"],1,"<b>Every</b>. Mọi lần, nhấn mạnh tính tổng thể, lặp lại."],
+["There are two cars. ___ car has a different color.",["Each","Every"],0,"<b>Each</b>. Chỉ có 2 chiếc xe, ta nhắc đến từng cá thể riêng biệt. “Every” không dùng cho nhóm chỉ có 2 đối tượng."]]],
+p3:["Chọn dạng đúng của động từ","Phần 3 – Hòa hợp chủ ngữ - động từ",[
+["A number of people (has / have) arrived.",["has","have"],1,"<b>have</b>. A number of + danh từ số nhiều + động từ chia số nhiều."],
+["The number of cars on the road (is / are) increasing.",["is","are"],0,"<b>is</b>. The number of + danh từ số nhiều + động từ chia số ít."],
+["All of the water (is / are) gone.",["is","are"],0,"<b>is</b>. “Water” là danh từ không đếm được nên động từ luôn chia ở dạng số ít."]]]};
+let sc=0,an=0;
+document.querySelectorAll(".exr").forEach(box=>{const e=E[box.dataset.k];box.innerHTML=`<h4>✏ ${e[0]}</h4>`+e[2].map((q,i)=>`<div class="qi"><p><b>${i+1}.</b> ${q[0]}</p><div class="op">${q[1].map((o,j)=>`<button data-j="${j}">${o}</button>`).join("")}</div><div class="fb"></div></div>`).join("");
+box.querySelectorAll(".qi").forEach((it,i)=>{const q=e[2][i],A=[].concat(q[2]),bs=it.querySelectorAll("button");bs.forEach(b=>b.onclick=()=>{const j=+b.dataset.j,ok=A.includes(j);bs.forEach(x=>x.disabled=true);A.forEach(a=>bs[a].classList.add("c"));if(!ok)b.classList.add("x");const f=it.querySelector(".fb");f.className="fb "+(ok?"ok":"bad");f.innerHTML=(ok?"✅ <b>Chính xác!</b> ":"❌ <b>Chưa đúng.</b> ")+q[3];an++;sc+=ok;$("#pill").textContent=`Bài tập ${sc}/13`+(an==13?" 🎉":"");sfx(ok?"ok":"no")})})});
+$("#ans").innerHTML=Object.values(E).map(e=>`<details><summary>${e[1]}: ${e[0]}</summary><ul>${e[2].map((q,i)=>`<li><b>${i+1}.</b> ${q[3]}</li>`).join("")}</ul></details>`).join("");
+
+/* glass */
+const W=[["20","🙁","Ly nước cạn khô: thiếu thốn, không đủ dùng (tiêu cực)."],["80","🙂","Ly nước còn một chút, đủ để giải khát (tích cực)."]];
+document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{const w=W[+b.dataset.w];$("#wt").setAttribute("y",150-w[0]*0.9);$("#wt").setAttribute("height",w[0]*0.9+5);$("#fc").textContent=w[1];$("#wc").textContent=w[2];document.querySelectorAll("[data-w]").forEach(x=>x.classList.toggle("on",x==b))});
+$("[data-w='1']").click();
+
+/* flowers + parallax + reveal */
+(function(){let s="";const cl=["#ff6a1f","#ff8a3d","#9b86d6","#b39df0","#fff"];for(let i=0;i<170;i++){const x=Math.random()*1440,y=90+Math.random()*170,c=cl[Math.floor(Math.random()*5)],r=3+y/40;s+=`<line x1="${x}" y1="260" x2="${x+Math.random()*10-5}" y2="${y}" stroke="#5f7a2a" stroke-width="2"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`}$("#fl").innerHTML=`<rect y="200" width="1440" height="60" fill="#6f8a2e"/><g class="sway">${s}</g>`})();
+const ly=document.querySelectorAll(".ly");
+addEventListener("scroll",()=>{const y=scrollY;if(y<innerHeight*1.2)ly.forEach(l=>l.style.transform=`translateY(${y*l.dataset.s*-1*-1}px)`);$("#bar").style.width=(y/(document.body.scrollHeight-innerHeight)*100)+"%"});
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("on");io.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
